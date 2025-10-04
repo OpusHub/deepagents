@@ -37,5 +37,6 @@ EXPOSE 8000
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app:$PYTHONPATH
 
-# Comando para iniciar o LangGraph Server com langgraph CLI
-CMD sh -c "langgraph serve --host 0.0.0.0 --port ${PORT:-8000} --config langgraph.json"
+# Comando para iniciar o LangGraph Server
+# Usa comando 'dev' (similar ao Node.js version)
+CMD sh -c "langgraph dev --host 0.0.0.0 --port ${PORT:-8000}"

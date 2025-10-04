@@ -1,5 +1,5 @@
 {
-  "dependencies": ["."],
+  "dependencies": ["../../."],
   "graphs": {
     "copy_creator": "./graph.py:graph"
   },

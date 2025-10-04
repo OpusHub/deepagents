@@ -21,6 +21,8 @@ from examples.copy_creator.types.copy_output import CopyOutput, CopyObject
 # PROMPT CONTENT PLACEHOLDER
 COPY_CREATOR_INSTRUCTIONS = """# SPECIALIST AGENT IN CREATING PERSUASIVE COPY FOR CONSTRUCTION AND HOME IMPROVEMENT
 
+
+
 🇧🇷 **CRITICAL: INTERACTION IN PORTUGUESE, FINAL COPIES IN ENGLISH** 🇧🇷
 All your responses, explanations, and outputs to the user MUST be in Portuguese.
 Internal processing can be in English.

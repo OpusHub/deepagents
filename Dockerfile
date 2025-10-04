@@ -18,7 +18,7 @@ COPY src/ ./src/
 # Instalar dependências Python
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -e . && \
-    pip install --no-cache-dir langchain-google-genai langgraph-cli
+    pip install --no-cache-dir langchain-google-genai langgraph-cli langserve[all] uvicorn fastapi
 
 # Copiar o resto do projeto
 COPY examples/ ./examples/
@@ -38,4 +38,5 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app:$PYTHONPATH
 
 # Comando para iniciar o LangGraph Server
-CMD ["./start_server.sh"]
+# Usar servidor Python direto (mais confiável que langgraph CLI)
+CMD ["python", "server.py"]

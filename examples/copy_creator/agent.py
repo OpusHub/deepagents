@@ -15,7 +15,7 @@ from examples.copy_creator.agents.market_research_agent import market_research_a
 from examples.copy_creator.agents.hook_strategy_agent import hook_strategy_agent
 from examples.copy_creator.agents.copy_creation_agent import copy_creation_agent
 from examples.copy_creator.agents.quality_assurance_agent import quality_assurance_agent
-from examples.copy_creator.types.copy_output import CopyOutput, CopyObject
+from examples.copy_creator.models.copy_output import CopyOutput, CopyObject
 
 
 # PROMPT CONTENT PLACEHOLDER

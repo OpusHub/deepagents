@@ -11,22 +11,24 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar arquivos de dependências
-COPY pyproject.toml ./
-COPY src/ ./src/
-COPY examples/copy_creator/ ./examples/copy_creator/
+# Copiar todo o projeto (necessário para importações relativas)
+COPY . .
 
 # Instalar dependências Python
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -e . && \
     pip install --no-cache-dir langchain-google-genai langgraph-cli
 
-# Expor porta do LangGraph Server
+# Mudar para o diretório do copy_creator
+WORKDIR /app/examples/copy_creator
+
+# Expor porta do LangGraph Server (Railway usa $PORT)
 EXPOSE 8000
 
 # Definir variáveis de ambiente
 ENV PYTHONUNBUFFERED=1
-ENV LANGSERVE_GRAPHS='{"copy_creator": "examples.copy_creator.graph:graph"}'
+ENV PYTHONPATH=/app:$PYTHONPATH
 
 # Comando para iniciar o LangGraph Server
-CMD ["langgraph", "serve", "--host", "0.0.0.0", "--port", "8000", "--config", "examples/copy_creator/langgraph.json"]
+# Railway vai sobrescrever com o Procfile
+CMD ["sh", "-c", "langgraph serve --host 0.0.0.0 --port ${PORT:-8000} --config langgraph.json"]

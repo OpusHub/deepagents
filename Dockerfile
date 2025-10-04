@@ -38,5 +38,5 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app:$PYTHONPATH
 
 # Comando para iniciar o LangGraph Server
-# Usa comando 'dev' (similar ao Node.js version)
-CMD sh -c "langgraph dev --host 0.0.0.0 --port ${PORT:-8000}"
+# langgraph dev procura langgraph.json automaticamente no diretório atual
+CMD sh -c "langgraph dev --host 0.0.0.0 --port ${PORT:-8000} --no-browser"

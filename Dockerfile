@@ -39,4 +39,5 @@ ENV PYTHONPATH=/app:$PYTHONPATH
 
 # Comando para iniciar o LangGraph Server
 # langgraph dev procura langgraph.json automaticamente no diretório atual
+# Updated: 2025-01-04 - Usando langgraph dev (não serve)
 CMD sh -c "langgraph dev --host 0.0.0.0 --port ${PORT:-8000} --no-browser"

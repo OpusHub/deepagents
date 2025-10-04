@@ -11,13 +11,17 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar todo o projeto
-COPY . .
+# Copiar arquivos de configuração primeiro
+COPY pyproject.toml README.md LICENSE ./
+COPY src/ ./src/
 
 # Instalar dependências Python
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -e . && \
     pip install --no-cache-dir langchain-google-genai langgraph-cli
+
+# Copiar o resto do projeto
+COPY examples/ ./examples/
 
 # Mudar para o diretório do copy_creator
 WORKDIR /app/examples/copy_creator

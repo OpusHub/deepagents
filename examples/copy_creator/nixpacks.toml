@@ -1,0 +1,7 @@
+[phases.setup]
+nixPkgs = []
+
+[phases.build]
+
+[start]
+cmd = "langgraph serve --host 0.0.0.0 --port $PORT --config langgraph.json"
